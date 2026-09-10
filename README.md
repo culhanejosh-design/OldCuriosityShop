@@ -1,16 +1,25 @@
-# OldCuriosityShop
-Ecommerce Site for sale of crafting items.
-The Old Curiosity Shop
+The Old Curiosity Shop.
 
-From Porch Hobby to Passion Project-
-Our small craft business started as a hobby on an enclosed front porch in Schenectady, New York. We made small gifts for family and friends for holidays, birthdays, and other special celebrations. We always welcomed family members, children, and grand babies to help us. As their interest grew, they were they were always excited to help. It was a family affair!
+Mission Statement.
 
-A Growing Demand for Heartfelt Creations-
-The years went by and we started noticing a genuine market for our family’s unique creations.
-That's when my wife and I got more creative with our collecting and crafting. People asked us to craft something truly from their own sentimental items - dry flowers from a wedding, a
-funeral, or other cherished events. These personalized pieces were a big hit!
+The goal of this project is to make an e-commerce website for The Old Curiosity Shop. The Old Curiosity Shop makes handmade sea glass and driftwood and other natural pieces of artwork. The website will allow visitors to learn about the business, browse a gallery of completed projects, and view products that are currently available for purchase. The design will reflect the natural, coastal style of the artwork while remaining simple and easy to navigate.
 
-Ready for the World!-
-We heard the calling loud and clear! We went to the courthouse, finalized our legalities,
-established our business name, set up our email, and launched our website. Now we are ready to share our work not just in the local markets, but The Old Curiosity Shop
+The project will eventually use a database to store product, customer, and order information. Users will be able to create an account, add products to a shopping cart, and submit orders through the website. An administrator will also be able to add new products, update inventory, change prices, and remove unavailable items.
 
+Target Audience
+
+The primary audience is customers with access to the internet interested in handmade artwork, coastal decorations, sea glass creations, driftwood art, and unique hand made gifts.
+
+Core Features
+
+•	Users can create an account and log in. 
+
+•	Users can browse and search for available products.
+
+•	Users can add or remove products from a shopping cart.
+
+•	Users can place an order through the website.
+
+•	Users can submit requests for custom artwork.
+
+•	An administrator can add, edit, and remove products. 
