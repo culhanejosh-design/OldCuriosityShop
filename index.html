@@ -4,88 +4,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Lora:ital,wght@0,400..700;1,400..700&family=National+Park:wght@200..800&display=swap"
         rel="stylesheet">
+
     <title>The Old Curiosity Shop</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header class="site-header">
-        <H1>The Old Curiosity Shop</H1>
-    </header>
+<header class="site-header">
+    <img class="header-logo"
+         src="assets/Images/LogoSeethrough.png"
+         alt="">
 
-    <nav class="sticky">
+    <h1 tabindex="-1">The Old Curiosity Shop</h1>
+
+    <img class="header-logo"
+         src="assets/Images/LogoSeethrough.png"
+         alt="">
+</header>
+
+    <nav class="sticky" aria-label="Main navigation">
         <ul class="nav-links">
             <li><a href="index.html" aria-current="page">Home</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="store.html">Store</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
     <main class="container">
+
+        <!-- Introduction and image slider -->
         <section class="introduction">
             <h2>Welcome to The Old Curiosity Shop</h2>
-            <p>Old Curiosity Shop is an arts and crafts store specializing in handcrafted sea glass and driftwood art.
+
+            <p>
+                Old Curiosity Shop is an arts and crafts store specializing
+                in handcrafted sea glass and driftwood art.
             </p>
-            <div class="slider">
-                <div class="slide active" style="background-image: url('assets/Images/SwimmingFish.jpg');"></div>
 
-                <div class="slide" style="background-image: url('assets/Images/WallSconceGreen.jpeg');"></div>
+            <div class="slider" role="region"
+                 aria-label="Featured handcrafted artwork">
 
-                <div class="slide" style="background-image: url('assets/Images/TreeOfLife.jpg');"></div>
+                <div class="slide active"
+                     role="img"
+                     aria-label="Handcrafted swimming fish artwork"
+                     style="background-image: url('assets/Images/SwimmingFish.jpg');">
+                </div>
 
-                <div class="nav prev">❮</div>
-                <div class="nav next">❯</div>
+                <div class="slide"
+                     role="img"
+                     aria-label="Handcrafted green wall sconce"
+                     style="background-image: url('assets/Images/WallSconceGreen.jpeg');">
+                </div>
+
+                <div class="slide"
+                     role="img"
+                     aria-label="Handcrafted Tree of Life artwork"
+                     style="background-image: url('assets/Images/TreeOfLife.jpg');">
+                </div>
+
+                <button class="nav prev"
+                        type="button"
+                        aria-label="Previous artwork"
+                        style="border: none;">
+                    ❮
+                </button>
+
+                <button class="nav next"
+                        type="button"
+                        aria-label="Next artwork"
+                        style="border: none;">
+                    ❯
+                </button>
             </div>
         </section>
-        <section class="story">
+
+        <!-- Section 2: Scroll-triggered reveal animation -->
+        <section class="story reveal">
             <h2>Our Story</h2>
 
             <h3>From Porch Hobby to Passion Project</h3>
+
             <p>
-                Our small craft business started as a hobby on an enclosed front porch
-                in Schenectady, New York. We made small gifts for family and friends for
-                holidays, birthdays, and other special celebrations.
+                Our small craft business started as a hobby on an enclosed
+                front porch in Schenectady, New York. We made small gifts
+                for family and friends for holidays, birthdays, and other
+                special celebrations.
             </p>
 
             <p>
-                We always welcomed family members, children, and grandbabies to help us.
-                As their interest grew, they were always excited to join in. It truly
-                became a family affair.
+                We always welcomed family members, children, and grandbabies
+                to help us. As their interest grew, they were always excited
+                to join in. It truly became a family affair.
             </p>
 
             <h3>A Growing Demand for Heartfelt Creations</h3>
+
             <p>
-                As the years went by, we began noticing a genuine market for our
-                family’s unique creations. People asked us to craft pieces using their
-                own sentimental items, including dried flowers from weddings, funerals,
-                and other cherished events.
+                As the years went by, we began noticing a genuine market for
+                our family’s unique creations. People asked us to craft
+                pieces using their own sentimental items, including dried
+                flowers from weddings, funerals, and other cherished events.
             </p>
 
             <h3>Ready for the World</h3>
+
             <p>
-                We heard the calling loud and clear. We established our business,
-                created our website, and prepared to share our work beyond our local
-                markets. Now, we are ready to share our handcrafted creations with the
-                world.
+                We heard the calling loud and clear. We established our
+                business, created our website, and prepared to share our
+                work beyond our local markets. Now, we are ready to share
+                our handcrafted creations with the world.
             </p>
         </section>
-        <section class="contact-info">
+
+        <!-- Contact information -->
+        <section class="contact-info reveal">
             <h2>Contact Us</h2>
+
             <a href="tel:+15182275947">1-518-227-5947</a>
-            <p><a href="mailto:email@example.com">Send Email</a></p>
+
+            <p>
+                <a href="mailto:email@example.com">Send Email</a>
+            </p>
+        </section>
+
+        <!-- Section 3: Third-party weather API -->
+        <section class="weather-card reveal"
+                 aria-labelledby="weather-heading">
+
+            <h2 id="weather-heading">Weather on the Maine Coast</h2>
+
+            <p>Bailey Island, Maine</p>
+
+            <p id="weather-details"
+               role="status"
+               aria-live="polite"
+               aria-atomic="true">
+                Loading coastal weather...
+            </p>
+
+            <button id="refresh-weather" type="button">
+                Refresh Weather
+            </button>
+
+            <p class="weather-credit">
+                Weather data by
+                <a href="https://open-meteo.com/">Open-Meteo</a>
+            </p>
         </section>
 
     </main>
+
     <footer>
-        <p> &copy; 2026 The Old Curiosity Shop. All rights reserved.</p>
+        <p>
+            &copy; 2026 The Old Curiosity Shop. All rights reserved.
+        </p>
     </footer>
+
+    <!-- Section 1: Scroll-to-top button -->
+    <button id="back-to-top"
+            type="button"
+            aria-label="Scroll back to top"
+            disabled>
+        ↑ Back to Top
+    </button>
+
     <script src="site.js"></script>
 </body>
 

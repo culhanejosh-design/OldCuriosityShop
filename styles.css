@@ -402,3 +402,151 @@ footer {
         height: auto;
     }
 }
+
+#back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 20;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #234957;
+    color: #fffdf7;
+    font-family: "National Park", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity 0.3s ease, transform 0.3s ease,
+                visibility 0.3s;
+}
+
+#back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#back-to-top:hover,
+#refresh-weather:hover {
+    background-color: #b75340;
+}
+
+#back-to-top:focus-visible,
+#refresh-weather:focus-visible {
+    outline: 3px solid #b75340;
+    outline-offset: 4px;
+}
+
+
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.reveal-pending {
+    opacity: 0;
+    transform: translateY(35px);
+}
+
+
+.weather-card {
+    grid-column: 1 / -1;
+    padding: 30px;
+    background-color: #fffdf8;
+    border: 1px solid #d4ded9;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgb(39 72 78 / 8%);
+    text-align: center;
+}
+
+#weather-details {
+    margin: 15px 0;
+    color: #234957;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+#refresh-weather {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 4px;
+    background-color: #234957;
+    color: #fffdf7;
+    font: inherit;
+    cursor: pointer;
+}
+
+#refresh-weather:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+.weather-credit {
+    margin-top: 14px;
+    font-size: 0.85rem;
+}
+
+.weather-credit a {
+    text-decoration: underline;
+}
+
+/* Respect visitors who prefer less animation */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal,
+    .reveal.reveal-pending {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    #back-to-top,
+    .slide {
+        transition: none;
+    }
+}
+/* Logos on both sides of the header title */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px 20px;
+}
+
+.site-header h1 {
+    flex: 1;
+    max-width: 800px;
+    min-width: 0;
+}
+
+.header-logo {
+    width: clamp(70px, 12vw, 150px);
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* Smaller logos and spacing on phones */
+@media (max-width: 600px) {
+    .site-header {
+        gap: 10px;
+        padding: 25px 10px;
+    }
+
+    .header-logo {
+        width: 55px;
+    }
+
+    .site-header h1 {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+    }
+}
