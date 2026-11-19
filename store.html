@@ -4,41 +4,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Old Curiosity Shop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lora:wght@400;600;700&family=National+Park:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <title>Custom Orders | The Old Curiosity Shop</title>
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .store-page .introduction,
+        .custom-order {
+            grid-column: 1 / -1;
+        }
+
+        .store-grid {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+            width: 100%;
+        }
+
+        .store-card {
+            overflow: hidden;
+            background: #fffdf8;
+            border: 1px solid #d4ded9;
+            border-radius: 4px;
+            box-shadow: 0 6px 18px rgb(39 72 78 / 12%);
+        }
+
+        .store-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #edf2ef;
+        }
+
+        .store-card-content {
+            padding: 20px;
+        }
+
+        .store-card h3 {
+            margin-bottom: 8px;
+            color: #234957;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.6rem;
+        }
+
+        .store-card button,
+        .custom-order-form button {
+            padding: 10px 15px;
+            border: 0;
+            border-radius: 4px;
+            background: #234957;
+            color: #fffdf7;
+            font: 600 1rem "National Park", sans-serif;
+            cursor: pointer;
+        }
+
+        .store-card button:hover,
+        .custom-order-form button:hover {
+            background: #b75340;
+        }
+
+        .custom-order {
+            padding: 30px;
+            background: #fffdf8;
+            border: 1px solid #d4ded9;
+            border-radius: 6px;
+            box-shadow: 0 8px 24px rgb(39 72 78 / 8%);
+        }
+
+        .custom-order-form {
+            display: grid;
+            gap: 16px;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        .custom-order-form label {
+            display: grid;
+            gap: 6px;
+            color: #234957;
+            font-weight: 700;
+        }
+
+        .custom-order-form input,
+        .custom-order-form select,
+        .custom-order-form textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #aebfba;
+            border-radius: 4px;
+            background: #fff;
+            color: #243b42;
+            font: inherit;
+        }
+
+        .custom-order-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        #order-message {
+            min-height: 1.5em;
+            font-weight: 700;
+        }
+
+        @media (max-width: 600px) {
+            .store-card img {
+                height: auto;
+                max-height: 320px;
+                object-fit: contain;
+            }
+
+            .custom-order {
+                padding: 22px 18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header class="site-header">
-        <a href="index.html">
-            <img src="assets/Images/logoBig.jpg" alt="The Old Curiosity Shop logo" class="logo">
-        </a>
-
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="store.html" aria-current="page">Store</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <img class="header-logo" src="assets/Images/LogoSeethrough.png" alt="">
+        <h1>The Old Curiosity Shop</h1>
+        <img class="header-logo" src="assets/Images/LogoSeethrough.png" alt="">
     </header>
-    <main>
+
+    <nav class="sticky" aria-label="Main navigation">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="store.html" aria-current="page">Store</a></li>
+        </ul>
+    </nav>
+
+    <main class="container store-page">
         <section class="introduction">
-            <h2>Welcome to The Old Curiosity Shop</h2>
-            <p>Old Curiosity Shop is an arts and crafts store specializing in handcrafted sea glass and driftwood art.</p>
+            <h2>Request a Custom Piece</h2>
+            <p>
+                These pieces show examples of our work. Tell us what you have in
+                mind, and we’ll follow up to discuss the details.
+            </p>
         </section>
 
-        <section class="contact-info">
-            <h2>Contact Us</h2>
-            <a href="tel:+15182275947">1-518-227-5947</a>
-            <p><a href="mailto:email@example.com">Send Email</a></p>
-            </section>
-        </main>
+        <section class="store-grid" aria-label="Examples of our work">
+            <article class="store-card">
+                <img src="assets/Images/SwimmingFish.jpg"
+                     alt="Handcrafted artwork featuring swimming fish">
+                <div class="store-card-content">
+                    <h3>Swimming Fish</h3>
+                    <p>A handcrafted piece that can inspire a custom design.</p>
+                    <button type="button" data-request="Swimming Fish style">
+                        Request a similar piece
+                    </button>
+                </div>
+            </article>
 
-        <footer>
-            <p> &copy; 2026 The Old Curiosity Shop. All rights reserved.</p>
-        </footer>
-    </body>
+            <article class="store-card">
+                <img src="assets/Images/WallSconceGreen.jpeg"
+                     alt="Handcrafted green wall sconce">
+                <div class="store-card-content">
+                    <h3>Green Wall Sconce</h3>
+                    <p>Use this wall piece as a starting point for your request.</p>
+                    <button type="button" data-request="Wall sconce">
+                        Request a similar piece
+                    </button>
+                </div>
+            </article>
+
+            <article class="store-card">
+                <img src="assets/Images/TreeOfLife.jpg"
+                     alt="Handcrafted Tree of Life artwork">
+                <div class="store-card-content">
+                    <h3>Tree of Life</h3>
+                    <p>Share your ideas for a personalized Tree of Life piece.</p>
+                    <button type="button" data-request="Tree of Life">
+                        Request a similar piece
+                    </button>
+                </div>
+            </article>
+        </section>
+
+        <section class="custom-order" id="custom-order">
+            <h2>Custom Order Request</h2>
+            <p>
+                Send us a description of what you’re looking for. This request
+                does not place an order or charge you.
+            </p>
+
+            <form class="custom-order-form" id="custom-order-form">
+                <label for="customer-name">
+                    Your name
+                    <input type="text" id="customer-name" name="name"
+                           maxlength="100" required>
+                </label>
+
+                <label for="customer-email">
+                    Email address
+                    <input type="email" id="customer-email" name="email"
+                           maxlength="254" required>
+                </label>
+
+                <label for="customer-phone">
+                    Phone number (optional)
+                    <input type="tel" id="customer-phone" name="phone"
+                           maxlength="30">
+                </label>
+
+                <label for="request-type">
+                    What would you like?
+                    <select id="request-type" name="requestType" required>
+                        <option value="">Choose one</option>
+                        <option value="Swimming Fish style">Swimming Fish style</option>
+                        <option value="Wall sconce">Wall sconce</option>
+                        <option value="Tree of Life">Tree of Life</option>
+                        <option value="Custom idea">A different custom idea</option>
+                    </select>
+                </label>
+
+                <label for="request-details">
+                    Describe your idea, including colors, size, or meaningful items
+                    <textarea id="request-details" name="details"
+                              maxlength="2000" required></textarea>
+                </label>
+
+                <button type="submit">Send Request</button>
+                <p id="order-message" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Old Curiosity Shop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const orderForm = document.getElementById('custom-order-form');
+        const requestType = document.getElementById('request-type');
+        const orderMessage = document.getElementById('order-message');
+
+        document.querySelectorAll('[data-request]').forEach(button => {
+            button.addEventListener('click', () => {
+                requestType.value = button.dataset.request;
+                document.getElementById('custom-order').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                requestType.focus();
+            });
+        });
+
+        orderForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            orderMessage.textContent = 'Sending your request...';
+
+            const submitButton = orderForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+
+            const formData = new FormData(orderForm);
+            const request = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('/api/custom-orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(request)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.error || 'Could not send the request.');
+                }
+
+                orderForm.reset();
+                orderMessage.textContent = result.message;
+            } catch (error) {
+                orderMessage.textContent =
+                    'Could not send your request. Please try again.';
+                console.error('Custom order request failed:', error);
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+
 </html>

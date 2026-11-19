@@ -1,5 +1,34 @@
 /* ========================================
-   GLOBAL RESET
+   DESIGN VARIABLES
+======================================== */
+
+:root {
+    --page-background: #f6f1e7;
+    --text-color: #243b42;
+    --header-background: #234957;
+    --light-text: #fffdf7;
+    --card-background: #fffdf8;
+    --border-color: #d4ded9;
+    --accent-color: #537d7a;
+    --link-color: #356f73;
+    --hover-color: #b75340;
+    --highlight-color: #f2d6ad;
+    --footer-background: #4f4339;
+    --slider-background: #edf2ef;
+    --input-border: #9baba7;
+
+    --body-font: "Lora", serif;
+    --heading-font: "Cormorant Garamond", serif;
+    --nav-font: "National Park", sans-serif;
+
+    --card-radius: 6px;
+    --button-radius: 4px;
+    --card-shadow: 0 8px 24px rgb(39 72 78 / 8%);
+}
+
+
+/* ========================================
+   GLOBAL RESET AND BASE STYLES
 ======================================== */
 
 *,
@@ -16,9 +45,10 @@ html {
 
 body {
     min-height: 100vh;
-    background-color: #f6f1e7;
-    color: #243b42;
-    font-family: "Lora", serif;
+    background-color: var(--page-background);
+    color: var(--text-color);
+    font-family: var(--body-font);
+    font-size: 16px;
     line-height: 1.7;
 }
 
@@ -38,26 +68,51 @@ a {
     text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--hover-color);
+    outline-offset: 4px;
+}
+
+button,
+input {
+    font: inherit;
+}
+
 
 /* ========================================
    HEADER
 ======================================== */
 
 .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
-    padding: 55px 20px;
-    background-color: #234957;
-    color: #fffdf7;
+    padding: 25px 10px;
+    background-color: var(--header-background);
+    color: var(--light-text);
     text-align: center;
-    border-bottom: 1px solid #769c99;
+    border-bottom: 1px solid var(--accent-color);
 }
 
 .site-header h1 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    flex: 1;
+    min-width: 0;
+    max-width: 800px;
+    font-family: var(--heading-font);
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
     font-weight: 600;
     line-height: 1;
     letter-spacing: 1px;
+}
+
+.header-logo {
+    flex-shrink: 0;
+    width: 55px;
+    height: auto;
 }
 
 
@@ -70,8 +125,8 @@ a {
     top: 0;
     z-index: 10;
     width: 100%;
-    padding: 15px 20px;
-    background-color: #234957;
+    padding: 12px 15px;
+    background-color: var(--header-background);
     box-shadow: 0 3px 8px rgb(28 50 57 / 15%);
 }
 
@@ -80,112 +135,106 @@ a {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 18px 38px;
+    gap: 10px 22px;
 }
 
 .nav-links a {
     position: relative;
     padding: 5px 0;
-    color: #fffdf7;
-    font-family: "National Park", sans-serif;
+    color: var(--light-text);
+    font-family: var(--nav-font);
     font-size: 1rem;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
 .nav-links a::after {
-    content: "";
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
     height: 2px;
-    background-color: #c86a50;
+    background-color: var(--hover-color);
+    content: "";
     transform: scaleX(0);
     transition: transform 0.2s ease;
 }
 
 .nav-links a:hover::after,
-.nav-links a:focus::after,
+.nav-links a:focus-visible::after,
 .nav-links a[aria-current="page"]::after {
     transform: scaleX(1);
 }
 
 .nav-links a:hover,
-.nav-links a:focus,
+.nav-links a:focus-visible,
 .nav-links a[aria-current="page"] {
-    color: #f2d6ad;
+    color: var(--highlight-color);
 }
 
 .nav-links a:focus-visible {
-    outline: 3px solid #f2d6ad;
-    outline-offset: 5px;
+    outline-color: var(--highlight-color);
 }
 
 
 /* ========================================
-   MAIN GRID
+   MAIN PAGE LAYOUT
 ======================================== */
 
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    grid-template-columns: 1fr;
     align-items: start;
-
+    gap: 20px;
     width: min(1180px, 100%);
     margin: 0 auto;
-    padding: 55px 24px;
+    padding: 25px 15px;
 }
-
-.introduction {
-    grid-column: 1 / -1;
-}
-
-.story {
-    grid-column: span 2;
-}
-
-.contact-info {
-    grid-column: span 1;
-}
-
-
-/* ========================================
-   CONTENT CARDS
-======================================== */
 
 .introduction,
 .story,
-.contact-info {
-    background-color: #fffdf8;
-    border: 1px solid #d4ded9;
-    border-radius: 6px;
-    box-shadow: 0 8px 24px rgb(39 72 78 / 8%);
+.contact-info,
+.weather-card {
+    min-width: 0;
+}
+
+.introduction,
+.story,
+.contact-info,
+.weather-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
 }
 
 .introduction {
-    padding: 40px;
+    padding: 24px 20px;
     text-align: center;
 }
 
 .story,
 .contact-info {
-    padding: 34px;
+    padding: 24px 20px;
 }
+
+
+/* ========================================
+   TYPOGRAPHY AND CONTENT
+======================================== */
 
 h2 {
     margin-bottom: 12px;
-    color: #234957;
-    font-family: "Cormorant Garamond", serif;
+    color: var(--header-background);
+    font-family: var(--heading-font);
     font-size: 2.1rem;
     line-height: 1.2;
 }
 
 .story h3 {
     margin: 25px 0 6px;
-    color: #537d7a;
-    font-family: "National Park", sans-serif;
+    color: var(--accent-color);
+    font-family: var(--nav-font);
     font-size: 1.05rem;
     letter-spacing: 0.4px;
 }
@@ -210,7 +259,7 @@ h2 {
 
 .contact-info h2 {
     padding-bottom: 12px;
-    border-bottom: 1px solid #d4ded9;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .contact-info p {
@@ -218,13 +267,13 @@ h2 {
 }
 
 .contact-info a {
-    color: #356f73;
+    color: var(--link-color);
     font-weight: 700;
 }
 
 .contact-info a:hover,
-.contact-info a:focus {
-    color: #b75340;
+.contact-info a:focus-visible {
+    color: var(--hover-color);
     text-decoration: underline;
 }
 
@@ -237,11 +286,11 @@ h2 {
     position: relative;
     width: 100%;
     max-width: 760px;
-    height: 440px;
+    height: 290px;
     margin: 30px auto 0;
     overflow: hidden;
-    background-color: #edf2ef;
-    border-radius: 4px;
+    background-color: var(--slider-background);
+    border-radius: var(--button-radius);
 }
 
 .slide {
@@ -249,11 +298,9 @@ h2 {
     inset: 0;
     width: 100%;
     height: 100%;
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
@@ -266,24 +313,27 @@ h2 {
     position: absolute;
     top: 50%;
     z-index: 2;
-
     display: grid;
     place-items: center;
-
-    width: 44px;
-    height: 52px;
-    color: white;
-    background-color: rgb(35 73 87 / 78%);
+    width: 38px;
+    height: 46px;
+    color: var(--light-text);
+    background-color: rgb(35 73 87 / 90%);
+    border: none;
     border-radius: 3px;
-
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     user-select: none;
     transform: translateY(-50%);
 }
 
 .slider .nav:hover {
-    background-color: #b75340;
+    background-color: var(--hover-color);
+}
+
+.slider .nav:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .slider .prev {
@@ -301,107 +351,215 @@ h2 {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 22px;
-
     width: min(1180px, 100%);
     margin: 0 auto;
-    padding: 55px 24px;
+    padding: 25px 15px;
 }
 
 .gallery img {
     width: 100%;
-    height: 260px;
+    height: auto;
+    background-color: var(--slider-background);
+    border: 8px solid var(--card-background);
+    border-radius: var(--button-radius);
+    box-shadow: 0 6px 18px rgb(39 72 78 / 12%);
     object-fit: cover;
-    background-color: #edf2ef;
-    border: 8px solid #fffdf8;
+}
+/* Gallery page and artwork cards */
+.gallery-page .gallery {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.gallery-item {
+    overflow: hidden;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     box-shadow: 0 6px 18px rgb(39 72 78 / 12%);
 }
 
+.gallery-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
 
-/* ========================================
-   FOOTER
-======================================== */
-
-footer {
-    padding: 28px 20px;
-    background-color: #4f4339;
-    color: #fffdf7;
+.gallery-item figcaption {
+    padding: 14px;
+    color: var(--header-background);
+    font-family: var(--nav-font);
     text-align: center;
-    font-size: 0.9rem;
 }
-
-
-/* ========================================
-   TABLET
-======================================== */
-
-@media (max-width: 800px) {
-    .container {
-        grid-template-columns: 1fr;
-        padding: 35px 20px;
-    }
-
-    .introduction,
-    .story,
-    .contact-info {
-        grid-column: 1;
-    }
-
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .slider {
-        height: 380px;
-    }
-}
-
-
-/* ========================================
-   MOBILE
-======================================== */
 
 @media (max-width: 600px) {
-    .site-header {
-        padding: 38px 15px;
-    }
-
-    .nav-links {
-        gap: 10px 22px;
-    }
-
-    .container {
-        gap: 20px;
-        padding: 25px 15px;
-    }
-
-    .introduction,
-    .story,
-    .contact-info {
-        padding: 24px 20px;
-    }
-
-    .slider {
-        height: 290px;
-    }
-
-    .slider .nav {
-        width: 38px;
-        height: 46px;
-        font-size: 1.2rem;
-    }
-
-    .gallery {
-        grid-template-columns: 1fr;
-        padding: 25px 15px;
-    }
-
-    .gallery img {
+    .gallery-item img {
         height: auto;
     }
 }
+
+/* ========================================
+   TASK TRACKER
+======================================== */
+
+#task-tracker {
+    width: min(650px, 100%);
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+}
+
+#task-tracker h2 {
+    margin-bottom: 10px;
+}
+
+#task-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#task-input {
+    flex: 1 1 180px;
+    min-width: 0;
+    padding: 10px;
+    color: var(--text-color);
+    background-color: #ffffff;
+    border: 1px solid var(--input-border);
+    border-radius: var(--button-radius);
+}
+
+#task-form button,
+#task-list button,
+#refresh-weather,
+#back-to-top {
+    padding: 10px 15px;
+    color: var(--light-text);
+    background-color: var(--header-background);
+    border: none;
+    border-radius: var(--button-radius);
+    font-family: var(--nav-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+#task-form button:hover,
+#task-list button:hover,
+#refresh-weather:hover,
+#back-to-top:hover {
+    background-color: var(--hover-color);
+}
+
+button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+#task-list {
+    padding: 0;
+}
+
+#task-list li {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 12px 0;
+    padding: 12px;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--button-radius);
+}
+
+#task-list span {
+    flex: 1 1 160px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+#task-list li.completed,
+#task-list li.completed span,
+.completed {
+    color: #52666b;
+    text-decoration: line-through;
+}
+
+#task-list .delete-button,
+#task-list button.delete-button,
+.delete-button {
+    background-color: var(--hover-color);
+}
+
+#task-list .delete-button:hover,
+#task-list button.delete-button:hover,
+.delete-button:hover {
+    background-color: var(--footer-background);
+}
+
+#task-message {
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+.error-message {
+    color: var(--hover-color);
+    font-weight: 700;
+}
+
+.success-message {
+    color: var(--link-color);
+    font-weight: 700;
+}
+
+
+/* ========================================
+   WEATHER CARD
+======================================== */
+
+.weather-card {
+    grid-column: 1;
+    padding: 24px 20px;
+    text-align: center;
+}
+
+#weather-details {
+    margin: 15px 0;
+    color: var(--header-background);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.weather-credit {
+    margin-top: 14px;
+    font-size: 0.85rem;
+}
+
+.weather-credit a {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+.weather-credit a:hover,
+.weather-credit a:focus-visible {
+    color: var(--hover-color);
+}
+
+
+/* ========================================
+   BACK-TO-TOP BUTTON
+======================================== */
 
 #back-to-top {
     position: fixed;
@@ -409,20 +567,11 @@ footer {
     bottom: 20px;
     z-index: 20;
     padding: 12px 18px;
-    border: none;
-    border-radius: 6px;
-    background-color: #234957;
-    color: #fffdf7;
-    font-family: "National Park", sans-serif;
-    font-size: 1rem;
-    cursor: pointer;
     box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
-
     opacity: 0;
     visibility: hidden;
     transform: translateY(15px);
-    transition: opacity 0.3s ease, transform 0.3s ease,
-                visibility 0.3s;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
 #back-to-top.show {
@@ -431,17 +580,10 @@ footer {
     transform: translateY(0);
 }
 
-#back-to-top:hover,
-#refresh-weather:hover {
-    background-color: #b75340;
-}
 
-#back-to-top:focus-visible,
-#refresh-weather:focus-visible {
-    outline: 3px solid #b75340;
-    outline-offset: 4px;
-}
-
+/* ========================================
+   SCROLL REVEAL ANIMATION
+======================================== */
 
 .reveal {
     opacity: 1;
@@ -455,98 +597,155 @@ footer {
 }
 
 
-.weather-card {
-    grid-column: 1 / -1;
-    padding: 30px;
-    background-color: #fffdf8;
-    border: 1px solid #d4ded9;
-    border-radius: 6px;
-    box-shadow: 0 8px 24px rgb(39 72 78 / 8%);
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    padding: 28px 20px;
+    color: var(--light-text);
+    background-color: var(--footer-background);
     text-align: center;
+    font-size: 0.9rem;
 }
 
-#weather-details {
-    margin: 15px 0;
-    color: #234957;
-    font-size: 1.15rem;
-    font-weight: 700;
+
+/* ========================================
+   TABLET AND LARGER: 600px+
+   Gallery becomes two columns and spacing increases.
+======================================== */
+
+@media (min-width: 600px) {
+    .site-header {
+        gap: 20px;
+        padding: 35px 20px;
+    }
+
+    .site-header h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .header-logo {
+        width: clamp(70px, 12vw, 120px);
+    }
+
+    .nav-links {
+        gap: 14px 32px;
+    }
+
+    .container {
+        gap: 28px;
+        padding: 35px 20px;
+    }
+
+    .introduction,
+    .story,
+    .contact-info,
+    .weather-card {
+        padding: 30px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 35px 20px;
+    }
+
+    .gallery img {
+        height: 260px;
+    }
+
+    .slider {
+        height: 380px;
+    }
+
+    .slider .nav {
+        width: 44px;
+        height: 52px;
+        font-size: 1.5rem;
+    }
+
+    #task-tracker {
+        padding: 25px;
+    }
 }
 
-#refresh-weather {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 4px;
-    background-color: #234957;
-    color: #fffdf7;
-    font: inherit;
-    cursor: pointer;
+
+/* ========================================
+   DESKTOP: 801px+
+   Main content and gallery use three columns.
+======================================== */
+
+@media (min-width: 801px) {
+    .site-header {
+        gap: 30px;
+        padding: 40px 20px;
+    }
+
+    .header-logo {
+        width: clamp(90px, 12vw, 150px);
+    }
+
+    .container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding: 55px 24px;
+    }
+
+    .introduction,
+    .weather-card {
+        grid-column: 1 / -1;
+    }
+
+    .story {
+        grid-column: span 2;
+    }
+
+    .contact-info {
+        grid-column: span 1;
+    }
+
+    .introduction {
+        padding: 40px;
+    }
+
+    .story,
+    .contact-info,
+    .weather-card {
+        padding: 34px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 55px 24px;
+    }
 }
 
-#refresh-weather:disabled {
-    opacity: 0.65;
-    cursor: wait;
-}
 
-.weather-credit {
-    margin-top: 14px;
-    font-size: 0.85rem;
-}
+/* ========================================
+   REDUCED MOTION ACCESSIBILITY
+======================================== */
 
-.weather-credit a {
-    text-decoration: underline;
-}
-
-/* Respect visitors who prefer less animation */
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 
     .reveal,
     .reveal.reveal-pending {
         opacity: 1;
         transform: none;
-        transition: none;
     }
 
     #back-to-top,
     .slide {
         transition: none;
-    }
-}
-/* Logos on both sides of the header title */
-.site-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    padding: 30px 20px;
-}
-
-.site-header h1 {
-    flex: 1;
-    max-width: 800px;
-    min-width: 0;
-}
-
-.header-logo {
-    width: clamp(70px, 12vw, 150px);
-    height: auto;
-    flex-shrink: 0;
-}
-
-/* Smaller logos and spacing on phones */
-@media (max-width: 600px) {
-    .site-header {
-        gap: 10px;
-        padding: 25px 10px;
-    }
-
-    .header-logo {
-        width: 55px;
-    }
-
-    .site-header h1 {
-        font-size: clamp(1.5rem, 6vw, 2.5rem);
     }
 }

@@ -4,22 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Old Curiosity Shop</title>
+    <title>Gallery | The Old Curiosity Shop</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Lora:ital,wght@0,400..700;1,400..700&family=National+Park:wght@200..800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
+        <img class="header-logo" src="assets/Images/LogoSeethrough.png" alt="">
+
         <h1>The Old Curiosity Shop</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="gallery.html" aria-current="page">Gallery</a></li>
-                <li><a href="store.html">Store</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+
+        <img class="header-logo" src="assets/Images/LogoSeethrough.png" alt="">
     </header>
+
+    <nav class="sticky" aria-label="Main navigation">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+            <li><a href="store.html">Store</a></li>
+        </ul>
+    </nav>
+
+    <main class="container gallery-page">
+        <section class="introduction">
+            <h2>Gallery</h2>
+            <p>Browse a selection of our handcrafted sea glass and driftwood art.</p>
+        </section>
+
+        <section class="gallery" aria-label="Handcrafted artwork">
+            <figure class="gallery-item">
+                <img src="assets/Images/SwimmingFish.jpg" alt="Handcrafted artwork featuring swimming fish">
+                <figcaption>Swimming Fish</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+                <img src="assets/Images/WallSconceGreen.jpeg" alt="Handcrafted green wall sconce">
+                <figcaption>Green Wall Sconce</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+                <img src="assets/Images/TreeOfLife.jpg" alt="Handcrafted Tree of Life artwork">
+                <figcaption>Tree of Life</figcaption>
+            </figure>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Old Curiosity Shop. All rights reserved.</p>
+    </footer>
+</body>
 
 </html>
